@@ -2051,7 +2051,7 @@ gui.run(function(){
 
 gui.dialogs.showProgressDialog(function(o) {
 	o.setIndeterminate(true);
-	o.setText("加载配置中...");
+	o.setText("加载ol配置中...");
 	config.init();
 	config.checkVersion();
 	o.setText("加载资源中...");
