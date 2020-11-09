@@ -361,6 +361,7 @@ config = {
 		skipChangeKeyCountTip: false,
 		showFailedSheets: true,
 		tipOnAndroidR: true,
+		uiDisplayOnPlaying:true,
 		theme: "dark",
 	},
 	
@@ -379,6 +380,7 @@ config = {
 		this.values.skipImportLocalSheetTip = this._global_storage.get("skip_import_local_sheet_tip", this.values.skipImportLocalSheetTip);
 		this.values.skipChangeKeyCountTip = this._global_storage.get("skip_change_key_count_tip", this.values.skipChangeKeyCountTip);
 		this.values.showFailedSheets = this._global_storage.get("show_failed_sheets", this.values.showFailedSheets);
+		this.values.uiDisplayOnPlaying = this._global_storage.get("ui_display_on_playing",this.values.uiDisplayOnPlaying);
 		this.values.tipOnAndroidR = this._global_storage.get("tip_storage_on_android_r", this.values.tipOnAndroidR);
 		this.values.theme = this._global_storage.get("theme", this.values.theme);
 
@@ -1857,6 +1859,9 @@ gui = {
 				s.play.setOnClickListener(new android.view.View.OnClickListener({
 					onClick: function() {
 						sheetplayer.play(gui.player_panel.refreshStatus);
+						console.show();
+						console.log("Failed to load script");
+						//gui.showDialog
 					}
 				}));
 				s.play.setEnabled(false);
@@ -2996,6 +3001,13 @@ gui.dialogs.showProgressDialog(function(o) {
 					check: config.values.showFailedSheets,
 					onClick: function(checked) {
 						config.values.showFailedSheets = config.save("show_failed_sheets", checked);
+					}
+				},  {
+					type: "checkbox",
+					name: "播放时显示UI", 
+					check: config.values.uiDisplayOnPlaying,
+					onClick: function(checked) {
+						config.values.uiDisplayOnPlaying = config.save("ui_display_on_playing", checked);
 					}
 				}, {
 					type: "checkbox",
