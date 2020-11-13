@@ -1480,6 +1480,10 @@ gui = {
 					gui.main._global_base.setAlpha(anim.getAnimatedValue());
 					if(anim.getAnimatedValue() == 0) {
 						gui.winMgr.removeView(gui.main._global_base);
+						if (!config.values.uiDisplayOnPlaying) {
+							java.lang.Thread.sleep(10000);
+						}
+						
 					}
 				});
 			}
@@ -1861,14 +1865,9 @@ gui = {
 					onClick: function() {
 						
 						if (!config.values.uiDisplayOnPlaying) {
-							gui.main.isShowing = false;
-							gui.main._global_close.setEnabled(false);
-							gui.main._global_close.setClickable(false);
-							gui.main._global_base.setAlpha(0);
-							gui.winMgr.removeView(gui.main._global_base);
-							//gui.player_panel.__internal_dismiss();
+							gui.player_panel.__internal_dismiss();
 
-							//java.lang.Thread.sleep(10000);
+							
 						}
 
 						sheetplayer.play(gui.player_panel.refreshStatus);
