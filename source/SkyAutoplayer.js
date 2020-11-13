@@ -1483,7 +1483,6 @@ gui = {
 						if (!config.values.uiDisplayOnPlaying) {
 							java.lang.Thread.sleep(10000);
 						}
-						
 					}
 				});
 			}
@@ -1865,9 +1864,9 @@ gui = {
 					onClick: function() {
 						
 						if (!config.values.uiDisplayOnPlaying) {
+							//gui.main.show(0);
+							gui.main._global_base.setAlpha(0);
 							gui.player_panel.__internal_dismiss();
-
-							
 						}
 
 						sheetplayer.play(gui.player_panel.refreshStatus);
