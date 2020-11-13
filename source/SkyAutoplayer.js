@@ -1861,7 +1861,7 @@ gui = {
 					onClick: function() {
 						
 						if (!config.values.uiDisplayOnPlaying) {
-							//gui.main.show(0);
+							gui.main.isShowing = false;
 							gui.main._global_close.setEnabled(false);
 							gui.main._global_close.setClickable(false);
 							gui.main._global_base.setAlpha(0);
