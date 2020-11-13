@@ -1859,11 +1859,15 @@ gui = {
 				s.play.setBackgroundDrawable(gui.utils.ripple_drawable(s.play.getMeasuredWidth(), s.play.getMeasuredHeight(), "rect"));
 				s.play.setOnClickListener(new android.view.View.OnClickListener({
 					onClick: function() {
-						sheetplayer.play(gui.player_panel.refreshStatus);
+						
 						if (!config.values.uiDisplayOnPlaying) {
 							//gui.main.show(0);
+							
 							gui.player_panel.__internal_dismiss();
+							java.lang.Thread.sleep(5000);
 						}
+
+						sheetplayer.play(gui.player_panel.refreshStatus);
 						
 						//console.show();
 						//console.log("Failed to load script");
