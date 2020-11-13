@@ -1480,8 +1480,10 @@ gui = {
 					gui.main._global_base.setAlpha(anim.getAnimatedValue());
 					if(anim.getAnimatedValue() == 0) {
 						gui.winMgr.removeView(gui.main._global_base);
-						if (!config.values.uiDisplayOnPlaying) {
+						if ((!config.values.uiDisplayOnPlaying) && sheetplayer.playing) {
+							sheetplayer.playing = false;
 							java.lang.Thread.sleep(10000);
+							
 						}
 					}
 				});
@@ -1866,7 +1868,9 @@ gui = {
 						if (!config.values.uiDisplayOnPlaying) {
 							//gui.main.show(0);
 							gui.main._global_base.setAlpha(0);
+							sheetplayer.playing = true;
 							gui.player_panel.__internal_dismiss();
+						
 						}
 
 						sheetplayer.play(gui.player_panel.refreshStatus);
