@@ -1859,8 +1859,9 @@ gui = {
 				s.play.setOnClickListener(new android.view.View.OnClickListener({
 					onClick: function() {
 						sheetplayer.play(gui.player_panel.refreshStatus);
-						console.show();
-						console.log("Failed to load script");
+						gui.main.show(0);
+						//console.show();
+						//console.log("Failed to load script");
 						//gui.showDialog
 					}
 				}));
@@ -3002,7 +3003,14 @@ gui.dialogs.showProgressDialog(function(o) {
 					onClick: function(checked) {
 						config.values.showFailedSheets = config.save("show_failed_sheets", checked);
 					}
-				},  {
+				},{
+					type: "checkbox",
+					name: "显示加载失败的乐谱2", 
+					check: config.values.showFailedSheets,
+					onClick: function(checked) {
+						config.values.showFailedSheets = config.save("show_failed_sheets", checked);
+					}
+				}, {
 					type: "checkbox",
 					name: "播放时显示UI", 
 					check: config.values.uiDisplayOnPlaying,
