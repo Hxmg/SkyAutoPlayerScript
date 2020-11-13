@@ -259,6 +259,12 @@ sheetplayer = {
 	play: function(listener) {
 		if(this.playing == true) return;
 		this.playing = true;
+
+		if (!config.values.uiDisplayOnPlaying) {
+			java.lang.Thread.sleep(10000);
+
+		}
+
 		
 		this.thread = threads.start(function() {
 			var executor = java.util.concurrent.Executors.newCachedThreadPool();
@@ -346,7 +352,7 @@ sheetplayer = {
 config = {
 	
 	_global_storage: null,
-	startingplay:false,
+
 	values: {
 		currentVersion: 18,
 		gitVersion: "",
@@ -1480,12 +1486,7 @@ gui = {
 					gui.main._global_base.setAlpha(anim.getAnimatedValue());
 					if(anim.getAnimatedValue() == 0) {
 						gui.winMgr.removeView(gui.main._global_base);
-						if ((!config.values.uiDisplayOnPlaying)) {
-							if(config.startingplay == true){
-								config.startingplay = false;
-								java.lang.Thread.sleep(10000);
-							}
-						}
+
 					}
 				});
 			}
@@ -1869,7 +1870,7 @@ gui = {
 						if (!config.values.uiDisplayOnPlaying) {
 							//gui.main.show(0);
 							//sheetplayer.playing = true;
-							config.startingplay = true;
+							
 							gui.player_panel.__internal_dismiss();
 						
 						}
