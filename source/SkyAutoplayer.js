@@ -1480,10 +1480,11 @@ gui = {
 					gui.main._global_base.setAlpha(anim.getAnimatedValue());
 					if(anim.getAnimatedValue() == 0) {
 						gui.winMgr.removeView(gui.main._global_base);
-						if ((!config.values.uiDisplayOnPlaying) && config.startingplay) {
-							config.startingplay = false;
-							java.lang.Thread.sleep(10000);
-							
+						if ((!config.values.uiDisplayOnPlaying)) {
+							if(config.startingplay == true){
+								config.startingplay = false;
+								java.lang.Thread.sleep(10000);
+							}
 						}
 					}
 				});
