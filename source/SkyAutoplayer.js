@@ -346,7 +346,7 @@ sheetplayer = {
 config = {
 	
 	_global_storage: null,
-	
+	startingplay:false,
 	values: {
 		currentVersion: 18,
 		gitVersion: "",
@@ -1480,8 +1480,8 @@ gui = {
 					gui.main._global_base.setAlpha(anim.getAnimatedValue());
 					if(anim.getAnimatedValue() == 0) {
 						gui.winMgr.removeView(gui.main._global_base);
-						if ((!config.values.uiDisplayOnPlaying)) {
-							//sheetplayer.playing = false;
+						if ((!config.values.uiDisplayOnPlaying) && config.startingplay) {
+							config.startingplay = false;
 							java.lang.Thread.sleep(10000);
 							
 						}
@@ -1868,6 +1868,7 @@ gui = {
 						if (!config.values.uiDisplayOnPlaying) {
 							//gui.main.show(0);
 							//sheetplayer.playing = true;
+							config.startingplay = true;
 							gui.player_panel.__internal_dismiss();
 						
 						}
