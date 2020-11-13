@@ -290,6 +290,7 @@ sheetplayer = {
 	
 	stop: function() {
 		this.playing = false;
+
 		this.currentNote = 0;
 		this.thread = null;
 	},
@@ -1859,7 +1860,10 @@ gui = {
 				s.play.setOnClickListener(new android.view.View.OnClickListener({
 					onClick: function() {
 						sheetplayer.play(gui.player_panel.refreshStatus);
-						gui.main.show(0);
+						if (!config.values.uiDisplayOnPlaying) {
+							gui.main.show(0);
+						}
+						
 						//console.show();
 						//console.log("Failed to load script");
 						//gui.showDialog
@@ -2999,13 +3003,6 @@ gui.dialogs.showProgressDialog(function(o) {
 				}, {
 					type: "checkbox",
 					name: "显示加载失败的乐谱", 
-					check: config.values.showFailedSheets,
-					onClick: function(checked) {
-						config.values.showFailedSheets = config.save("show_failed_sheets", checked);
-					}
-				},{
-					type: "checkbox",
-					name: "显示加载失败的乐谱2", 
 					check: config.values.showFailedSheets,
 					onClick: function(checked) {
 						config.values.showFailedSheets = config.save("show_failed_sheets", checked);
