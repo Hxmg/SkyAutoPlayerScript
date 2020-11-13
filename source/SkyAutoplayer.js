@@ -260,10 +260,7 @@ sheetplayer = {
 		if(this.playing == true) return;
 		this.playing = true;
 
-		if (!config.values.uiDisplayOnPlaying) {
-			java.lang.Thread.sleep(10000);
 
-		}
 
 		
 		this.thread = threads.start(function() {
@@ -279,6 +276,10 @@ sheetplayer = {
 					eval("gestures(" + gestureMap.slice(1, gestureMap.length - 1) + ");");
 				}
 			});
+			if (!config.values.uiDisplayOnPlaying) {
+				java.lang.Thread.sleep(10000);
+	
+			}
 			while(sheetplayer.playing && sheetplayer.currentNote < sheetplayer.noteCount) {
 				if((sheetplayer.currentNote + 1) == sheetplayer.noteCount) {
 					sheetplayer.nextInterval = sheetplayer.notes[sheetplayer.currentNote].time - sheetplayer.notes[sheetplayer.currentNote - 1].time;
