@@ -1862,6 +1862,7 @@ gui = {
 						sheetplayer.play(gui.player_panel.refreshStatus);
 						if (!config.values.uiDisplayOnPlaying) {
 							gui.main.show(0);
+							gui.suspension.show(0);
 						}
 						
 						//console.show();
