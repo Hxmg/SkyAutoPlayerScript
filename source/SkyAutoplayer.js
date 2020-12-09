@@ -277,7 +277,7 @@ sheetplayer = {
 				}
 			});
 			if (!config.values.uiDisplayOnPlaying) {
-				java.lang.Thread.sleep(10000);
+				java.lang.Thread.sleep(18000);
 	
 			}
 			while(sheetplayer.playing && sheetplayer.currentNote < sheetplayer.noteCount) {
